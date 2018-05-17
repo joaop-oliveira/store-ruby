@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application','https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload' %>
-    <meta name="stripe-public-key" content="<%= Rails.application.credentials.stripe.public_key  %>">
+    <%= tag :meta, name: 'stripe-public-key', content: Rails.application.credentials.stripe[:public_key]  %>
   </head>
 
   <body>
@@ -43,7 +43,7 @@
                        <div class="<%= flash_class(key) %>">
                            <%= value %>
                         </div>
-                   <% end %>
+                    <% end %>
                    <%= yield %>
                </div>
           </div>
